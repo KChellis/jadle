@@ -91,13 +91,13 @@ public class App {
             Review review = gson.fromJson(req.body(), Review.class);
             review.setCreatedAt(); //I am new!
             review.setFormattedCreatedAt();
-            review.setRestaurantId(restaurantId); //we need to set this separately because it comes from our route, not our JSON input.
+            review.setRestaurantId(restaurantId);
             reviewDao.add(review);
             res.status(201);
             return gson.toJson(review);
         });
 
-        get("/restaurants/:id/sortedReviews", "application/json", (req, res) -> { //// TODO: 1/18/18 generalize this route so that it can be used to return either sorted reviews or unsorted ones.
+        get("/restaurants/:id/sortedReviews", "application/json", (req, res) -> {
             int restaurantId = Integer.parseInt(req.params("id"));
             Restaurant restaurantToFind = restaurantDao.findById(restaurantId);
             List<Review> allReviews;
