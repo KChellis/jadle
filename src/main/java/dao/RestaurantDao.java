@@ -8,7 +8,6 @@ public interface RestaurantDao {
 
     //create
     void add (Restaurant restaurant);
-     void addRestaurantToFoodtype(Restaurant restaurant, Foodtype foodtype);
 
     //read
     List<Restaurant> getAll();

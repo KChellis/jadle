@@ -9,7 +9,7 @@ public class Review implements Comparable<Review>{
     private String writtenBy;
     private int rating;
     private int id;
-    private int restaurantId; //will be used to connect Restaurant to Review (one-to-many)
+    private int restaurantId;
     private long createdAt;
     private String formattedCreatedAt;
 
@@ -26,13 +26,13 @@ public class Review implements Comparable<Review>{
     public int compareTo(Review reviewObject) {
         if (this.createdAt < reviewObject.createdAt)
         {
-            return -1; //this object was made earlier than the second object.
+            return -1;
         }
-        else if (this.createdAt > reviewObject.createdAt){ //this object was made later than the second object
+        else if (this.createdAt > reviewObject.createdAt){
             return 1;
         }
         else {
-            return 0; //they were made at the same time, which is very unlikely, but mathematically not impossible.
+            return 0;
         }
     }
 
@@ -86,7 +86,7 @@ public class Review implements Comparable<Review>{
 
     public String getFormattedCreatedAt(){
         Date date = new Date(createdAt);
-        String datePatternToUse = "MM/dd/yyyy @ K:mm a"; //see https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+        String datePatternToUse = "MM/dd/yyyy @ K:mm a";
         SimpleDateFormat sdf = new SimpleDateFormat(datePatternToUse);
         return sdf.format(date);
     }

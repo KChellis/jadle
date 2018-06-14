@@ -16,7 +16,7 @@ public class Sql2oRestaurantDao implements RestaurantDao{
 
     @Override
     public void add(Restaurant restaurant) {
-        String sql = "INSERT INTO restaurants (name, address, zipcode, phone, website, email) VALUES (:name, :address, :zipcode, :phone, :website, :email)"; //if you change your model, be sure to update here as well!
+        String sql = "INSERT INTO restaurants (name, address, zipcode, phone, website, email) VALUES (:name, :address, :zipcode, :phone, :website, :email)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(restaurant)
@@ -84,20 +84,6 @@ public class Sql2oRestaurantDao implements RestaurantDao{
         String sql = "DELETE from restaurants";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).executeUpdate();
-        } catch (Sql2oException ex) {
-            System.out.println(ex);
-        }
-    }
-
-    @Override
-    public void addRestaurantToFoodtype(Restaurant restaurant, Foodtype foodtype) {
-        String sql = "INSERT INTO restaurants_foodtypes (restaurantid, foodtypeid) VALUES (:restaurantId, :foodtypeId)";
-
-        try (Connection con = sql2o.open()) {
-            con.createQuery(sql)
-                    .addParameter("restaurantId", restaurant.getId())
-                    .addParameter("foodtypeId", foodtype.getId())
-                    .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }

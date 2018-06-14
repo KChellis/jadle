@@ -15,7 +15,7 @@ public class Sql2oFoodtypeDao implements FoodtypeDao{
 
     @Override
     public void add(Foodtype foodtype) {
-        String sql = "INSERT INTO foodtypes (name) VALUES (:name)"; //if you change your model, be sure to update here as well!
+        String sql = "INSERT INTO foodtypes (name) VALUES (:name)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(foodtype)

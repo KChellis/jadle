@@ -47,7 +47,7 @@ public class Sql2oReviewDaoTest {
     @Test
     public void getAllReviewsByRestaurant() throws Exception {
         Restaurant testRestaurant = setupRestaurant();
-        Restaurant otherRestaurant = setupRestaurant(); //add in some extra data to see if it interferes
+        Restaurant otherRestaurant = setupRestaurant();
         Review review1 = setupReviewForRestaurant(testRestaurant);
         Review review2 = setupReviewForRestaurant(testRestaurant);
         Review reviewForOtherRestaurant = setupReviewForRestaurant(otherRestaurant);
@@ -126,7 +126,7 @@ public class Sql2oReviewDaoTest {
         System.out.println(sortedReviews.get(1).getContent());
         System.out.println(sortedReviews.get(2).getContent());
         System.out.println(sortedReviews.get(3).getContent());
-        assertEquals(4, sortedReviews.size()); //it is important we verify that the list is the same size.
+        assertEquals(4, sortedReviews.size());
         assertEquals("I prefer home cooking", sortedReviews.get(0).getContent());
     }
 
